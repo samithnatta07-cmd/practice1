@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}{{ category.name }} — Samith Cloud Tech{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="--card-color:{{ category.color }}">
+  <a href="{{ url_for('tech') }}" class="back-link">← All Technologies</a>
+  <h1 class="page-title" style="color:{{ category.color }}">{{ category.name }}</h1>
+  <p class="page-sub">{{ category.description }}</p>
+</section>
+
+<section class="section">
+  {% for t in technologies %}
+  <div class="detail-block">
+    <h2 class="detail-tech-name">{{ t.name }}</h2>
+    <p class="detail-tech-desc">{{ t.description }}</p>
+
+    {% if t.use_cases %}
+    <div class="detail-subsection">
+      <h3 class="detail-sub-title">🔹 Use Cases</h3>
+      <ul class="detail-list">
+        {% for uc in t.use_cases %}
+        <li><strong>{{ uc.title }}</strong> — {{ uc.detail }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if t.jobs %}
+    <div class="detail-subsection">
+      <h3 class="detail-sub-title">💼 Career Paths</h3>
+      <div class="jobs-grid">
+        {% for job in t.jobs %}
+        <div class="job-card">
+          <span class="job-title">{{ job.title }}</span>
+          <span class="job-salary">{{ job.avg_salary }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

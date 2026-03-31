@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Samith Cloud Tech — Home{% endblock %}
+
+{% block content %}
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Cloud · AI · Dev</p>
+    <h1 class="hero-title">
+      Engineer the<br>
+      <span class="hero-accent">Future Stack</span>
+    </h1>
+    <p class="hero-sub">
+      Dive deep into Cloud, Data Science, ML, Full Stack Dev,
+      Data Analytics &amp; Networking — built for builders.
+    </p>
+    <div class="hero-cta">
+      <a href="{{ url_for('tech') }}"    class="btn btn-primary">Explore Technologies</a>
+      <a href="{{ url_for('bio') }}"     class="btn btn-ghost">About Me</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="orbit-ring ring-1"></div>
+    <div class="orbit-ring ring-2"></div>
+    <div class="orbit-ring ring-3"></div>
+    <div class="orbit-center">
+      <svg viewBox="0 0 80 80" fill="none"><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="44" fill="var(--accent)">☁</text></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── CATEGORY CARDS ─────────────────────────────────────── -->
+<section class="section cats-section">
+  <h2 class="section-title">What I Cover</h2>
+  <div class="cats-grid">
+    {% for cat in categories %}
+    <a href="{{ url_for('tech_detail', slug=cat.slug) }}" class="cat-card" style="--card-color:{{ cat.color }}">
+      <div class="cat-icon">
+        {% if cat.icon == 'cloud' %}☁️
+        {% elif cat.icon == 'chart-bar' %}📊
+        {% elif cat.icon == 'cpu' %}🤖
+        {% elif cat.icon == 'code' %}💻
+        {% elif cat.icon == 'trending-up' %}📈
+        {% else %}🌐
+        {% endif %}
+      </div>
+      <h3 class="cat-name">{{ cat.name }}</h3>
+      <p class="cat-desc">{{ cat.description }}</p>
+      <span class="cat-arrow">→</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── STATS BAR ──────────────────────────────────────────── -->
+<section class="stats-bar">
+  <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Tech Domains</span></div>
+  <div class="stat"><span class="stat-num">AWS</span><span class="stat-label">Certified</span></div>
+  <div class="stat"><span class="stat-num">CCNA</span><span class="stat-label">Certified</span></div>
+  <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Learning</span></div>
+</section>
+
+{% endblock %}

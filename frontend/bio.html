@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block title %}Bio — Samith Cloud Tech{% endblock %}
+
+{% block content %}
+
+<!-- ── BIO HERO ─────────────────────────────────────────────── -->
+<section class="page-hero bio-hero">
+  <div class="bio-avatar-wrap">
+    <div class="bio-avatar">S</div>
+    <div class="bio-avatar-ring"></div>
+  </div>
+  <div>
+    <h1 class="page-title">Samith</h1>
+    <p class="bio-tagline">Cloud Engineer · Data Enthusiast · Network Architect</p>
+  </div>
+</section>
+
+<div class="bio-grid section">
+
+  <!-- ── ABOUT ME ──────────────────────────────────────────── -->
+  <div class="bio-card bio-about">
+    <h2 class="bio-card-title">👋 About Me</h2>
+    <p class="bio-about-text">
+      Hey! I'm Samith — a passionate technologist who loves building things in the cloud
+      and making sense of data. I hold AWS and CCNA certifications and enjoy working across
+      the full tech spectrum: from spinning up VPCs and Lambda functions to training ML
+      models and designing full-stack applications. When I'm not coding, I'm probably
+      reading about distributed systems or experimenting with new frameworks.
+    </p>
+    <!-- ── COMMENT SECTION ─────────────────────────────────── -->
+    <div class="comment-box">
+      <h3 class="comment-title">💬 Leave a Comment</h3>
+      <textarea class="comment-input" id="commentInput" rows="3" placeholder="Write something nice…"></textarea>
+      <button class="btn btn-primary btn-sm mt-1" id="commentBtn">Post Comment</button>
+      <div id="commentsList" class="comments-list"></div>
+    </div>
+  </div>
+
+  <!-- ── SKILLS ─────────────────────────────────────────────── -->
+  <div class="bio-card bio-skills">
+    <h2 class="bio-card-title">⚡ Skills</h2>
+
+    <h3 class="skills-group-title">AWS Services</h3>
+    <div class="skills-chips">
+      {% for svc in aws_services %}
+      <span class="skill-chip chip-aws">{{ svc }}</span>
+      {% endfor %}
+    </div>
+
+    <h3 class="skills-group-title">Networking</h3>
+    <div class="skills-chips">
+      <span class="skill-chip chip-net">CCNA</span>
+      <span class="skill-chip chip-net">TCP/IP</span>
+      <span class="skill-chip chip-net">VLANs</span>
+      <span class="skill-chip chip-net">OSPF</span>
+      <span class="skill-chip chip-net">Firewalls</span>
+      <span class="skill-chip chip-net">VPN</span>
+    </div>
+
+    <h3 class="skills-group-title">Dev &amp; Data</h3>
+    <div class="skills-chips">
+      <span class="skill-chip chip-dev">Python</span>
+      <span class="skill-chip chip-dev">Flask</span>
+      <span class="skill-chip chip-dev">React</span>
+      <span class="skill-chip chip-dev">SQL</span>
+      <span class="skill-chip chip-dev">Power BI</span>
+      <span class="skill-chip chip-dev">Machine Learning</span>
+    </div>
+  </div>
+
+  <!-- ── RESUME ─────────────────────────────────────────────── -->
+  <div class="bio-card bio-doc">
+    <h2 class="bio-card-title">📄 Resume</h2>
+    <p class="bio-doc-desc">My complete professional resume with education, experience and achievements.</p>
+    <a href="{{ url_for('static', filename=docs.resume) }}" target="_blank" class="doc-btn">
+      <span class="doc-icon">📋</span> View Resume
+    </a>
+  </div>
+
+  <!-- ── CERTIFICATIONS ─────────────────────────────────────── -->
+  <div class="bio-card bio-certs">
+    <h2 class="bio-card-title">🏅 Certifications</h2>
+    <div class="certs-list">
+      <div class="cert-item">
+        <div class="cert-badge cert-aws">AWS</div>
+        <div>
+          <p class="cert-name">AWS Certified (Solutions Architect / Cloud Practitioner)</p>
+          <a href="{{ url_for('static', filename=docs.cert_aws) }}" target="_blank" class="cert-link">View Certificate →</a>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge cert-ccna">CCNA</div>
+        <div>
+          <p class="cert-name">Cisco Certified Network Associate</p>
+          <a href="{{ url_for('static', filename=docs.cert_ccna) }}" target="_blank" class="cert-link">View Certificate →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECTS ───────────────────────────────────────────── -->
+  <div class="bio-card bio-projects">
+    <h2 class="bio-card-title">🚀 Projects</h2>
+    <div class="projects-list">
+
+      <div class="project-item">
+        <div class="project-num">01</div>
+        <div>
+          <h3 class="project-name">Cloud Infrastructure Automation</h3>
+          <p class="project-desc">Automated multi-tier AWS deployment using EC2, RDS, ALB, VPC and CloudWatch with Infrastructure-as-Code.</p>
+          <a href="{{ url_for('static', filename=docs.project1) }}" target="_blank" class="cert-link">View Project PDF →</a>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-num">02</div>
+        <div>
+          <h3 class="project-name">ML-Powered Analytics Dashboard</h3>
+          <p class="project-desc">End-to-end data pipeline with Python, scikit-learn and Power BI for real-time business intelligence.</p>
+          <a href="{{ url_for('static', filename=docs.project2) }}" target="_blank" class="cert-link">View Project PDF →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /bio-grid -->
+
+{% endblock %}

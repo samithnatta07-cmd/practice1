@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Technologies — Samith Cloud Tech{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <h1 class="page-title">Technologies</h1>
+  <p class="page-sub">Six domains. Real-world depth. Click any category to explore use‑cases &amp; career paths.</p>
+</section>
+
+<section class="section">
+  {% for cat in categories %}
+  <div class="tech-category-block" style="--card-color:{{ cat.color }}">
+    <div class="tech-cat-header">
+      <span class="tech-cat-emoji">
+        {% if cat.icon == 'cloud' %}☁️
+        {% elif cat.icon == 'chart-bar' %}📊
+        {% elif cat.icon == 'cpu' %}🤖
+        {% elif cat.icon == 'code' %}💻
+        {% elif cat.icon == 'trending-up' %}📈
+        {% else %}🌐{% endif %}
+      </span>
+      <div>
+        <h2 class="tech-cat-name">{{ cat.name }}</h2>
+        <p class="tech-cat-desc">{{ cat.description }}</p>
+      </div>
+      <a href="{{ url_for('tech_detail', slug=cat.slug) }}" class="btn btn-sm">Deep Dive →</a>
+    </div>
+    <div class="tech-chips">
+      {% for t in cat.technologies %}
+      <span class="chip">{{ t.name }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}
